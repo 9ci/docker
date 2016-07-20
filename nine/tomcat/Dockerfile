@@ -1,15 +1,13 @@
 FROM dordoka/tomcat
 
-MAINTAINER Ken Roberts <ken@9ci.com>
+MAINTAINER Ken Roberts <kroberts@9ci.com>
 
-#RUN WARNAME=`ssh teamcity.9ci.com 'ls -t ftp/wars/rcm/989/rcm-9.9.x* | head -n 1'` && \
-#echo $WARNAME && \
-#scp teamcity.9ci.com:$WARNAME /opt/tomcat/webapps/rcm.war
+RUN mkdir -p /var/9ci/rootLocation/conf/ && \
+    mkdir -p /var/9ci/rootLocation/setup/ && \
+    mkdir -p /var/9ci/rootLocation/scripts/ && \
+    mkdir -p /opt/tomcat/webapps/ROOT/
 
-RUN mkdir -p /var/9ci/rootLocation/conf/
-RUN mkdir -p /var/9ci/rootLocation/setup/
-RUN mkdir -p /var/9ci/rootLocation/scripts/
-RUN mkdir -p /opt/tomcat/webapps/ROOT/
+RUN apt-get update && apt-get install -y vim-nox tmux
 
 ADD 9ci-config.groovy /var/9ci/rootLocation/conf/
 ADD rcm-config.groovy /var/9ci/rootLocation/conf/
@@ -19,7 +17,6 @@ ADD index.html /opt/tomcat/webapps/ROOT/
 
 EXPOSE 8080
 EXPOSE 8009
-VOLUME "/opt/tomcat/webapps"
 WORKDIR /opt/tomcat
 
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
