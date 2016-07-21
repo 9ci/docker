@@ -49,5 +49,5 @@ RUN rm -rf \
 
 WORKDIR $CATALINA_HOME
 
-EXPOSE 8080 8443 80 443
+EXPOSE 8080
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
