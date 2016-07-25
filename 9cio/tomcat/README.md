@@ -4,7 +4,7 @@
 
 build.sh is a wrapper around the build process.  It pulls the latest rcm.war from the ftp site, assuming you have an account.
 
-```sudo docker build -t 9cio/tomcat:{version}```
+```sudo docker build -t 9cio/tomcat:{version} .```
 
 Somehow you need an rcm.war file in this directory before you build.  If you have a login at ftp.9ci.com and it's your
 local user account (joe here, joe there) then the build.sh will work for you.
