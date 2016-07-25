@@ -11,7 +11,7 @@ local user account (joe here, joe there) then the build.sh will work for you.
 
 # run
 
-```sudo docker run -d --net="host" -v /opt/tomcat/webapps:/opt/tomcat/webapps nine/tomcat:v14```
+```sudo docker run -d --net="host" -v `pwd`/webapps:/opt/tomcat/webapps -v `pwd`/rootLocation:/var/9ci/rootLocation nine/tomcat:v14```
 
 Note that :v14 is the revision number you want to run.  This should be the latest image.
 

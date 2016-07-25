@@ -1,19 +1,19 @@
-FROM dordoka/tomcat
+FROM 9cio/tomcat
 
 MAINTAINER Ken Roberts <kroberts@9ci.com>
 
-RUN mkdir -p /var/9ci/rootLocation/conf/ && \
-    mkdir -p /var/9ci/rootLocation/setup/ && \
-    mkdir -p /var/9ci/rootLocation/scripts/ && \
-    mkdir -p /opt/tomcat/webapps/ROOT/
+# Add stuff that Ken likes.
+RUN apt-get update && apt-get upgrade
+RUN apt-get update && apt-get install -y vim-nox tmux less
+RUN apt-get install -y mysql-client
 
-RUN apt-get update && apt-get install -y vim-nox tmux
 
-ADD 9ci-config.groovy /var/9ci/rootLocation/conf/
-ADD rcm-config.groovy /var/9ci/rootLocation/conf/
-ADD catalina.properties /opt/tomcat/conf/
-ADD rcm.war /opt/tomcat/webapps/
-ADD index.html /opt/tomcat/webapps/ROOT/
+ADD docker-props.sh /tmp/
+
+RUN chmod 755 /tmp/docker-props.sh
+
+RUN /tmp/docker-props.sh
+
 
 EXPOSE 8080
 EXPOSE 8009
