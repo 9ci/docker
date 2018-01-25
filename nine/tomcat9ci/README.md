@@ -19,13 +19,7 @@ mkdir -p /var/9ci/tomcat9ci_app/webapps
 mkdir -p /var/9ci/wars/rcm
 
 # This is an example. Get a war, copy it to /var/9ci/wars/rcm/
-cp ~/workspace/9.9.x/rcm/target/rcm-9.9.x-2018-01-24--20-25-00.war /var/9ci/wars/rcm/
-
-cd /var/9ci/wars/rcm/
-ln -s rcm-9.9.x-2018-01-24--20-25-00.war current.war
-
-cd /var/9ci/tomcat9ci_app/webapps
-ln -s /var/9ci/wars/rcm/current.war rcm.war
+cp ~/workspace/9.9.x/rcm/target/rcm-9.9.x-2018-01-24--20-25-00.war /var/9ci/tomcat9ci_app/webapps/rcm.war
 
 # This is an example. Get a rootLocation from rcm (or from teamcity) and copy it over.
 cp -rax ~/workspace/9.9.x/rcm/rootLocation /var/9ci/
