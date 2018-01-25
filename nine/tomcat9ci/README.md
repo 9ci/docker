@@ -16,9 +16,8 @@ sudo chown $USER:$USER /var/9ci
 
 mkdir -p /var/9ci/tomcat9ci_app/logs
 mkdir -p /var/9ci/tomcat9ci_app/webapps
-mkdir -p /var/9ci/wars/rcm
 
-# This is an example. Get a war, copy it to /var/9ci/wars/rcm/
+# This is an example. Get a war, copy it to /var/9ci/tomcat9ci_app/webapps
 cp ~/workspace/9.9.x/rcm/target/rcm-9.9.x-2018-01-24--20-25-00.war /var/9ci/tomcat9ci_app/webapps/rcm.war
 
 # This is an example. Get a rootLocation from rcm (or from teamcity) and copy it over.
