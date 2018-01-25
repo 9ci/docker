@@ -46,7 +46,7 @@ docker run -d -p 8180:8080 -p 8280:8009 -v /var/9ci/tomcat9ci_app/webapps:/usr/l
 The above command has the following features:
 
 Parameter                                                    | Comments
-=============================================================|======================
+-------------------------------------------------------------|----------------------
 -d                                                           | run as a background process
 -p 8180:8080                                                 | map the http docker image port (8080) to 8180 on the host for this container.
 -p 8280:8009                                                 | The AJP port maps to 8280 on the host for this container.
@@ -61,7 +61,7 @@ Parameter                                                    | Comments
 # Useful commands
 
 Command                                   | What it does
-==========================================|=========================================
+------------------------------------------|-----------------------------------------
 docker ps                                 | See the running containers
 docker ps -a                              | See all containers, whether they're running or not.
 docker images                             | See the docker images you have available.
