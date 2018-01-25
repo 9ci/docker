@@ -1,1 +1,0 @@
-grails.serverURL='http://chronos:8080/rcm'
