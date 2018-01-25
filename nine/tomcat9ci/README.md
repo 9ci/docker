@@ -45,6 +45,8 @@ docker run -d -p 8180:8080 -p 8280:8009 -v /var/9ci/tomcat9ci_app/webapps:/usr/l
 
 The above command has the following features:
 
+>Note: The items in the left column are on one line. Github is wrapping when it shouldn't.
+
 Parameter                                                      | Comments
 ---------------------------------------------------------------|----------------------
 `-d`                                                           | run as a background process
@@ -59,6 +61,8 @@ Parameter                                                      | Comments
 
 
 # Useful commands
+
+>Note: The items in the left column are on one line. Github is wrapping when it shouldn't.
 
 Command                                     | What it does
 --------------------------------------------|-----------------------------------------
