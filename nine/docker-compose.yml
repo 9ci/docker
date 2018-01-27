@@ -1,0 +1,28 @@
+version: "2"
+services:
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=999plazadrive
+    volumes:
+      - "/var/lib/mysql:/var/lib/mysql"
+      - "/etc/mysql/conf.d:/etc/mysql/conf.d"
+      - "/var/run/mysqld:/var/run/mysqld"
+
+  tomcat9ci_app:
+    build:
+      context: ./tomcat9ci
+    container_name: tomcat9ci_app
+    depends_on: 
+      - "mysql"
+    volumes:
+      - /var/9ci/tomcat9ci_app/logs:/usr/local/tomcat/logs
+      - /var/9ci/tomcat9ci_app/webapps:/usr/local/tomcat/webapps
+      - /var/9ci/rootLocation:/var/9ci/rootLocation
+      - /var/9ci/wars:/var/9ci/wars
+    ports:
+      - "8180:8080"

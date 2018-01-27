@@ -1,12 +1,12 @@
-FROM tomcat:8.5
+FROM tomcat:8.5-jre8-alpine
 
 MAINTAINER Ken Roberts <kroberts@9ci.com>
 
 # Add a system group for tomcat files.
-RUN addgroup --system tomcat
+RUN addgroup -S tomcat
 
 # Add a system user for tomcat to run as.
-RUN adduser --system --group tomcat
+RUN adduser -S -G tomcat tomcat
 
 # Add our "hot" configuration directory to the tomcat classpath.
 RUN sed -i 's/\(common.loader=\)/\1"\/var\/9ci\/rootLocation\/conf",/' /usr/local/tomcat/conf/catalina.properties
