@@ -1,0 +1,15 @@
+version: "2"
+services:
+
+  tomcat9ci_app:
+    image: localhost:5000/tomcat9ci
+    container_name: tomcat9ci_app
+    external_links:
+      - mysqldb
+    volumes:
+      - ../../tomcat9ci_app/logs:/usr/local/tomcat/logs
+      - ../../tomcat9ci_app/webapps:/usr/local/tomcat/webapps
+      - ../../rootLocation:/var/9ci/rootLocation
+      - ../../wars:/var/9ci/wars
+    ports:
+      - "8180:8080"

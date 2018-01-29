@@ -1,0 +1,31 @@
+version: "2"
+
+
+services:
+
+  mysqldb:
+    # Notes:
+    # You need to add 'mysqldb' into your /etc/hosts to point at your computer's IP address (NOT LOCALHOST!)
+    # Your dataSource needs to be jdbc:mysql://mysqldb/... instead of using 127.0.0.1 or ::1
+    # command-line mysql client:  mysql -h mysqldb -user root -p
+    image: mysql:5.7
+    container_name: mysqldb
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=999plazadrive
+    # volumes: # These volumes map to my host-based mysql server, so I turn that off and run it on docker.
+      # - "/var/lib/mysql:/var/lib/mysql"
+      # - "/etc/mysql/conf.d:/etc/mysql/conf.d"
+    #   - "/var/run/mysqld:/var/run/mysqld"
+
+  registry:
+    image: registry:2
+    container_name: registry
+    restart: always
+    ports:
+      - "5000:5000"
+    # volumes:
+      # - "./certs:/certs:ro"
+      # - "./registry/conf:/etc/docker/registry:ro"
+      # - "./registry/storage:/var/lib/registry:rw"
