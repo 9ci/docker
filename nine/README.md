@@ -82,6 +82,21 @@ docker start registry
 docker start mysqldb
 ```
 
+### Mysql installation notes
+
+If you're running Linux as a host OS, then google __mysql barrier=0__. Mysql when left to its
+own devices is unbearably slow.
+
+If you're using a dev box, you may want to create a separate filesystem and put it in
+`/etc/fstab` like this:
+
+```
+/dev/mapper/hddvg1-mysql                  /var/lib/mysql   ext4    defaults,barrier=0 0 2
+```
+
+Note that this creates an unsafe condition which can corrupt data. __Don't do this on a
+production system!__
+
 ### Mysql access notes:
 
 * The docker mysql is running in a vm, which is NOT LOCALHOST TO YOU!
