@@ -62,6 +62,20 @@ Note that the change is to append `mysql9ci` as another name for `localhost`.
 
 See the README linked above for an explanation.
 
+### Troubleshooting mysql9ci
+
+If you get a '<host> is not allowed to connect to this mysql server' error:
+
+```
+docker exec -it mysql9ci /bin/bash
+mysql -u root -p
+create user 'root'@'your ip address' identified by 'root password from mysql-compose.yml';
+grant all privileges on *.* to 'root'@'your ip address';
+flush privileges;
+quit
+exit
+```
+
 ## Build or restore the databases you need.
 
 This is external to this document. If you had an existing mysql database on your host and didn't change

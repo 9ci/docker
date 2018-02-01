@@ -4,6 +4,8 @@ services:
   tomcat9ci_99x:
     image: localhost:5000/tomcat9ci
     container_name: tomcat9ci_99x
+    environment:
+      CATALINA_OPTS: "-Xmx2048m -Xms1024m -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:+CMSClassUnloadingEnabled -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremoteport=364 -Dcom.sun.management.jmxremote.ssl=false"
     external_links:
       - mysql9ci
       - mssql9ci
@@ -18,6 +20,8 @@ services:
   tomcat9ci_993y:
     image: localhost:5000/tomcat9ci
     container_name: tomcat9ci_993y
+    environment:
+      CATALINA_OPTS: "-Xmx2048m -Xms1024m -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:+CMSClassUnloadingEnabled -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremoteport=364 -Dcom.sun.management.jmxremote.ssl=false"
     external_links:
       - mysql9ci
       - mssql9ci
@@ -32,6 +36,8 @@ services:
   tomcat9ci_100x:
     image: localhost:5000/tomcat9ci
     container_name: tomcat9ci_100x
+    environment:
+      CATALINA_OPTS: "-Xmx2048m -Xms1024m -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:+CMSClassUnloadingEnabled -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremoteport=364 -Dcom.sun.management.jmxremote.ssl=false"
     external_links:
       - mysql9ci
       - mssql9ci
@@ -46,6 +52,8 @@ services:
   tomcat9ci_ninecall:
     image: localhost:5000/tomcat9ci
     container_name: tomcat9ci_ninecall
+    environment:
+      CATALINA_OPTS: "-Xmx2048m -Xms1024m -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:+CMSClassUnloadingEnabled -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremoteport=364 -Dcom.sun.management.jmxremote.ssl=false"
     external_links:
       - mysql9ci
       - mssql9ci
