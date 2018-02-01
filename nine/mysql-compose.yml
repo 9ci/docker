@@ -1,0 +1,19 @@
+version: "2"
+
+
+services:
+
+  mysql9ci:
+    # Notes:
+    # You need to add 'mysql9ci' into your /etc/hosts to point at your computer's IP address (NOT LOCALHOST!)
+    # Your dataSource needs to be jdbc:mysql://mysql9ci/... instead of using 127.0.0.1 or ::1
+    # command-line mysql client:  mysql -h mysql9ci -user root -p
+    image: localhost:5000/mysql9ci
+    container_name: mysql9ci
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=999plazadrive
+    volumes: # These volumes map to my host-based mysql server, so I turn that off and run it on docker.
+      - "/var/lib/mysql:/var/lib/mysql"

@@ -5,7 +5,8 @@ services:
     image: localhost:5000/tomcat9ci
     container_name: tomcat9ci_app
     external_links:
-      - mysqldb
+      - mysql9ci
+      - mssql9ci
     volumes:
       - ../../tomcat9ci_app/logs:/usr/local/tomcat/logs
       - ../../tomcat9ci_app/webapps:/usr/local/tomcat/webapps
@@ -14,3 +15,9 @@ services:
     ports:
       - "8180:8080" # http port
       - "8280:8009" # ajp port
+
+# Note:  The rootLocation is not rcm/rootLocation because that is defined for teamcity. The grails.serverURL
+# will cause your local app to redirect there.
+#
+# Copy rcm/rootLocation over, make changes to rootLocation, jdbc connection, grails.serverURL and run from
+# that.

@@ -5,50 +5,54 @@ services:
     image: localhost:5000/tomcat9ci
     container_name: tomcat9ci_99x
     external_links:
-      - mysqldb
+      - mysql9ci
+      - mssql9ci
     volumes:
-      - ../../99x/tomcat9ci_99x/logs:/usr/local/tomcat/logs
-      - ../../99x/tomcat9ci_99x/webapps:/usr/local/tomcat/webapps
-      - ../../99x/rootLocation:/var/9ci/rootLocation
+      - ../../9.9.x/tomcat9ci_99x/logs:/usr/local/tomcat/logs
+      - ../../9.9.x/tomcat9ci_99x/webapps:/usr/local/tomcat/webapps
+      - ../../9.9.x/rootLocation:/var/9ci/rootLocation
     ports:
-      - "9092:8080" # http port
-      - "9292:8009" # ajp port
-
-  tomcat9ci_ninecall:
-    image: localhost:5000/tomcat9ci
-    container_name: tomcat9ci_ninecall
-    external_links:
-      - mysqldb
-    volumes:
-      - ../../ninecall/tomcat9ci_ninecall/logs:/usr/local/tomcat/logs
-      - ../../ninecall/tomcat9ci_ninecall/webapps:/usr/local/tomcat/webapps
-      - ../../ninecall/rootLocation:/var/9ci/rootLocation
-    ports:
-      - "9093:8080" # http port
-      - "9293:8009" # ajp port
+      - "8180:8080" # http port
+      - "8280:8009" # ajp port
 
   tomcat9ci_993y:
     image: localhost:5000/tomcat9ci
     container_name: tomcat9ci_993y
     external_links:
-      - mysqldb
+      - mysql9ci
+      - mssql9ci
     volumes:
-      - ../../993y/tomcat9ci_993y/logs:/usr/local/tomcat/logs
-      - ../../993y/tomcat9ci_993y/webapps:/usr/local/tomcat/webapps
-      - ../../993y/rootLocation:/var/9ci/rootLocation
+      - ../../9.9.3.y/tomcat9ci_993y/logs:/usr/local/tomcat/logs
+      - ../../9.9.3.y/tomcat9ci_993y/webapps:/usr/local/tomcat/webapps
+      - ../../9.9.3.y/rootLocation:/var/9ci/rootLocation
     ports:
-      - "9094:8080" # http port
-      - "9294:8009" # ajp port
+      - "8181:8080" # http port
+      - "8281:8009" # ajp port
 
   tomcat9ci_100x:
     image: localhost:5000/tomcat9ci
     container_name: tomcat9ci_100x
     external_links:
-      - mysqldb
+      - mysql9ci
+      - mssql9ci
     volumes:
-      - ../../100x/tomcat9ci_100x/logs:/usr/local/tomcat/logs
-      - ../../100x/tomcat9ci_100x/webapps:/usr/local/tomcat/webapps
-      - ../../100x/rootLocation:/var/9ci/rootLocation
+      - ../../10.0.x/tomcat9ci_100x/logs:/usr/local/tomcat/logs
+      - ../../10.0.x/tomcat9ci_100x/webapps:/usr/local/tomcat/webapps
+      - ../../10.0.x/rootLocation:/var/9ci/rootLocation
     ports:
-      - "9096:8080" # http port
-      - "9296:8009" # ajp port
+      - "8182:8080" # http port
+      - "8282:8009" # ajp port
+
+  tomcat9ci_ninecall:
+    image: localhost:5000/tomcat9ci
+    container_name: tomcat9ci_ninecall
+    external_links:
+      - mysql9ci
+      - mssql9ci
+    volumes:
+      - ../../ninecall/tomcat9ci_ninecall/logs:/usr/local/tomcat/logs
+      - ../../ninecall/tomcat9ci_ninecall/webapps:/usr/local/tomcat/webapps
+      - ../../ninecall/rootLocation:/var/9ci/rootLocation
+    ports:
+      - "8183:8080" # http port
+      - "8283:8009" # ajp port

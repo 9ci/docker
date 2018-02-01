@@ -5,7 +5,7 @@ services:
     image: localhost:5000/tomcat9ci
     container_name: tomcat9ci_app
     external_links:
-      - mysqldb
+      - mysql9ci
     volumes:
       - ../../tomcat9ci_app/logs:/usr/local/tomcat/logs
       - ../../tomcat9ci_app/webapps:/usr/local/tomcat/webapps
@@ -19,7 +19,8 @@ services:
     image: localhost:5000/tomcat9ci
     container_name: tomcat9ci_api
     external_links:
-      - mysqldb
+      - mysql9ci
+      - mssql9ci
     volumes:
       - ../../tomcat9ci_api/logs:/usr/local/tomcat/logs
       - ../../tomcat9ci_api/webapps:/usr/local/tomcat/webapps
