@@ -4,6 +4,8 @@ services:
   tomcat9ci_app:
     image: localhost:5000/tomcat9ci
     container_name: tomcat9ci_app
+    environment:
+      CATALINA_OPTS: "-Xmx8192m -Xms8192m -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:+CMSClassUnloadingEnabled -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremoteport=364 -Dcom.sun.management.jmxremote.ssl=false"
     external_links:
       - mysql9ci
     volumes:
