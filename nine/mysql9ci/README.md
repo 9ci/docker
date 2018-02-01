@@ -1,6 +1,6 @@
 # The mysql9ci image
 
-* __You can't use mysql on your host AND on this docker container simultaneously as configured in this
+__You can't use mysql on your host AND on this docker container simultaneously as configured in this
 project!__ See below about incompatibilities. This incompatibility is due to 9ci configuration, not the
 official docker container.
 
