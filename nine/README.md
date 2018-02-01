@@ -105,7 +105,9 @@ production system!__
 * Use `mysql -h mysqldb -u root -p` instead.
 * In order for this to work, you need to edit your static hosts file at `/etc/hosts`:
 
-``` 127.0.0.1    localhost mysqldb```
+```
+127.0.0.1    localhost mysqldb
+```
 
 The above edit (appending 'mysqldb' to the localhost entry in /etc/hosts) will allow you to
 use the above command to access mysql in the docker container.
