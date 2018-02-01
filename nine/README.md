@@ -17,6 +17,8 @@ docker start registry9ci
 
 ## Create some images we need.
 
+And store them in our registry.
+
 ### mysql9ci
 
 ```
