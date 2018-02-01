@@ -39,7 +39,7 @@ configuration, no apps, no mapped volumes. It keeps everything clear and documen
 
 ## The 9ci directory
 
-9ci application server software goes into `/var/9ci` for UNIX and `D:\\9ci` on Windows. For
+9ci application server software goes into `/var/9ci` for UNIX and `D:\9ci` on Windows. For
 customer and common sites (9ci internal servers) we will stick with that convention. This
 directory is called the __9ci__ directory within this document.
 
@@ -48,7 +48,7 @@ __9ci__ directory.
 
 However with this project you can put the __9ci__ directory wherever you want. You need to have
 the __docker__ directory directly inside of your __9ci__ directory. So on UNIX the __docker__
-directory is `/var/9ci/docker` and on Windows it's `D:\\9ci\\docker`.
+directory is `/var/9ci/docker` and on Windows it's `D:\9ci\docker`.
 
 Wherever you put the __docker__ directory, the parent of this directory becomes your __9ci__
 directory.
