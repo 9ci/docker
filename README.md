@@ -1,10 +1,3 @@
-# Why the extra directory?
-
-The reason for the 'nine' directory is that docker-compose automatically sets up a network for
-docker containers based on the containing directory of the project.
-
-Rather than have it be called 'docker_default' I chose to have it be called 'nine_default'.
-
 # Purpose
 
 This project sets up a set of docker containers for multiple purposes:
@@ -14,6 +7,13 @@ This project sets up a set of docker containers for multiple purposes:
 3. Teamcity app servers.
 
 Each uses different files but they all have a common flow.
+
+# Why the extra directory?
+
+The reason for the 'nine' directory is that docker-compose automatically sets up a network for
+docker containers based on the containing directory of the project.
+
+Rather than have it be called 'docker_default' I chose to have it be called 'nine_default'.
 
 # Prerequisites
 
