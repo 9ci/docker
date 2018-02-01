@@ -10,14 +10,13 @@ services:
     # command-line mysql client:  mysql -h mysqldb -user root -p
     image: mysql:5.7
     container_name: mysqldb
+    restart: always
     ports:
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=999plazadrive
-    # volumes: # These volumes map to my host-based mysql server, so I turn that off and run it on docker.
-      # - "/var/lib/mysql:/var/lib/mysql"
-      # - "/etc/mysql/conf.d:/etc/mysql/conf.d"
-    #   - "/var/run/mysqld:/var/run/mysqld"
+    volumes: # These volumes map to my host-based mysql server, so I turn that off and run it on docker.
+      - "/var/lib/mysql:/var/lib/mysql"
 
   registry:
     image: registry:2

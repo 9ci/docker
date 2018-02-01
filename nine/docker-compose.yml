@@ -13,3 +13,4 @@ services:
       - ../../wars:/var/9ci/wars
     ports:
       - "8180:8080"
+      - "8280:8009"

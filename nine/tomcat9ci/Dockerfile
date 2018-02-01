@@ -24,5 +24,7 @@ RUN sed -i 's/protocol="AJP\/1.3"/\n\
               /' /usr/local/tomcat/conf/server.xml
 
 # Specify which ports can be exposed by the container.
+#  8080 is the normal http port
 EXPOSE 8080
+#  8009 is the NIO connector.
 EXPOSE 8009
