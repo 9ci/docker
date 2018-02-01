@@ -82,6 +82,28 @@ docker start registry
 docker start mysqldb
 ```
 
+### Mysql access notes:
+
+* The docker mysql is running in a vm, which is NOT LOCALHOST TO YOU!
+* The mysql command-line client handles localhost in a special way.
+* `mysql -u root -p` __will not work!__
+* Use `mysql -h mysqldb -u root -p` instead.
+* In order for this to work, you need to edit your static hosts file at `/etc/hosts`:
+
+``` 127.0.0.1    localhost mysqldb```
+
+The above edit (appending 'mysqldb' to the localhost entry in /etc/hosts) will allow you to
+use the above command to access mysql in the docker container.
+
+The issue is that mysql, when you connect to localhost or 127.0.0.1, will assume that the
+server is running in the "current" host operating system. It tries to find a process ID and
+communicate without using networking. It won't work because the file containing the process
+ID is on the docker container, not the host OS, and the process is running in docker, not the
+host OS.
+
+By making the static hosts entry, you trick mysql into connecting as though it were a foreign
+host, which is more correct than the assumption it's running on the host OS.
+
 ## Build the tomcat9ci image and push it to your repository.
 
 ```
@@ -106,6 +128,10 @@ You need a rootLocation to start with, and it needs to be consistent with the ve
 apps you will use in this environment.
 
 Put it in __9ci__/rootLocation.
+
+* The docker mysql host is __mysqldb__. Replace all occurrences of `127.0.0.1` with `mysqldb`.
+* No matter where you put __9ci__ directory, it is `/var/9ci/rootLocation` even if you're on
+windows or teamcity or a dev box!
 
 # App installation and upgrade.
 
