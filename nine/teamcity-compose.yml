@@ -1,0 +1,54 @@
+version: "2"
+services:
+
+  tomcat9ci_99x:
+    image: localhost:5000/tomcat9ci
+    container_name: tomcat9ci_99x
+    external_links:
+      - mysqldb
+    volumes:
+      - ../../99x/tomcat9ci_99x/logs:/usr/local/tomcat/logs
+      - ../../99x/tomcat9ci_99x/webapps:/usr/local/tomcat/webapps
+      - ../../99x/rootLocation:/var/9ci/rootLocation
+    ports:
+      - "9092:8080" # http port
+      - "9292:8009" # ajp port
+
+  tomcat9ci_ninecall:
+    image: localhost:5000/tomcat9ci
+    container_name: tomcat9ci_ninecall
+    external_links:
+      - mysqldb
+    volumes:
+      - ../../ninecall/tomcat9ci_ninecall/logs:/usr/local/tomcat/logs
+      - ../../ninecall/tomcat9ci_ninecall/webapps:/usr/local/tomcat/webapps
+      - ../../ninecall/rootLocation:/var/9ci/rootLocation
+    ports:
+      - "9093:8080" # http port
+      - "9293:8009" # ajp port
+
+  tomcat9ci_993y:
+    image: localhost:5000/tomcat9ci
+    container_name: tomcat9ci_993y
+    external_links:
+      - mysqldb
+    volumes:
+      - ../../993y/tomcat9ci_993y/logs:/usr/local/tomcat/logs
+      - ../../993y/tomcat9ci_993y/webapps:/usr/local/tomcat/webapps
+      - ../../993y/rootLocation:/var/9ci/rootLocation
+    ports:
+      - "9094:8080" # http port
+      - "9294:8009" # ajp port
+
+  tomcat9ci_100x:
+    image: localhost:5000/tomcat9ci
+    container_name: tomcat9ci_100x
+    external_links:
+      - mysqldb
+    volumes:
+      - ../../100x/tomcat9ci_100x/logs:/usr/local/tomcat/logs
+      - ../../100x/tomcat9ci_100x/webapps:/usr/local/tomcat/webapps
+      - ../../100x/rootLocation:/var/9ci/rootLocation
+    ports:
+      - "9096:8080" # http port
+      - "9296:8009" # ajp port

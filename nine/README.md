@@ -75,6 +75,11 @@ possibly if something needs to be updated.
 
 ## Create a registry and mysql database.
 
+___Alert: base-compose.yml uses the /var/lib/mysql directory on the host. Make sure your host
+copy of mysql is not enabled before you run this!___
+
+See "Mysql installation notes" for more information.
+
 ```
 cd __9ci__/docker/nine
 docker-compose -f base-compose.yml create
@@ -135,8 +140,17 @@ This is external to this document.
 
 ## Install the tomcats and apps
 
+One of the following commands based on the type of install you're doing:
 ```
-docker-compose create
+docker-compose -f customer-compose.yml create
+docker-compose -f developer-compose.yml create
+docker-compose -f teamcity-compose.yml create
+```
+
+and then:
+
+```
+sudo chown -R $USER:$USER ../..
 ```
 
 ## Get a rootLocation
