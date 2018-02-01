@@ -8,6 +8,12 @@ possibly if something needs to be updated.
 ___All commands assume you have a terminal window changed to the docker/nine directory unless explicitly
 stated otherwise.___
 
+## Create a network
+
+```
+docker network create nine_default
+```
+
 ## Create a registry
 
 ```
