@@ -83,6 +83,9 @@ the build, then you probably have all the databases you had before already.
 
 ## Install the tomcats and apps
 
+Based on the type of install you'll be doing, edit the customer-compose.yml, the developer-compose.yml or the teamcity-compose.yml
+and check the CATALINA\_OPTS for each tomcat to be sure they work for your system.
+
 Use one of the following commands based on the type of install you're doing:
 
 ```
