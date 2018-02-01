@@ -46,6 +46,16 @@ docker-compose -f mysql-compose.yml create
 docker start mysql9ci
 ```
 
+Edit `/etc/hosts` at the `localhost` definition:
+
+```
+127.0.0.1    localhost mysql9ci
+```
+
+Note that the change is to append `mysql9ci` as another name for `localhost`.
+
+See the README linked above for an explanation.
+
 ## Build or restore the databases you need.
 
 This is external to this document. If you had an existing mysql database on your host and didn't change

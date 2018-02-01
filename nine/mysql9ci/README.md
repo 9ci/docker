@@ -9,8 +9,8 @@ it.
 
 ## About the image
 
-If the installation is _not_ a customer site, then we will have a mysql image. This is the
-official mysql docker image, following the `5.7` tag. This image is based on Debian Linux so
+If the installation is _not_ a customer site, then we will have a mysql image. This isbased on the
+official mysql docker image, following the `5.7` tag. That image is based on Debian Linux so
 there will be a somewhat larger footprint on your host because Debian is a full-scale
 distribution.
 
@@ -24,7 +24,7 @@ This image has the following configuration changes:
 
 ## Filesystem considerations
 
-Mysql on Linux can be extremely slow in some circumstances. Those circumstances happen a lot
+Mysql on Linux can be incredibly slow in some circumstances. Those circumstances happen a lot
 when you create the database. This includes mysql on docker.
 
 There is a workaround which increases speed acceptably but it's not safe for production
@@ -45,12 +45,12 @@ and development.
 
 The default location of database files on Linux is /var/lib/mysql. The mysql-compose.yml file creating the
 container from this image maps /var/lib/mysql on the container to the same directory on the
-host. If your host has mysql running, this will be a disaster.
+host. __If your host has mysql running, this will be a disaster!__
 
 What you can do:
 
 1. Disable your mysql server on your host. (preferred)
-2. Comment out the volume sharing on the yml file.
+2. Comment out the volume sharing on the yml file and suffer the speed degradation.
 
 If you do map the docker container to /var/lib/mysql on your host, then all the databases you
 created on your host mysql server will be available on your docker image.
@@ -63,6 +63,8 @@ You can't use localhost even though the port 3306 is mapped to your host! Mysql 
 To access the mysql9ci instance from the host, you need to:
 
 `mysql -h mysql9ci -u root -p`
+
+Likewise with a GUI client, you need to use `mysql9ci` instead of `localhost`.
 
 __In order for this to work, you need some setup!__
 
