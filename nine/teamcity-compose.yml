@@ -16,6 +16,7 @@ services:
     ports:
       - "8180:8080" # http port
       - "8280:8009" # ajp port
+      - "8380:364"  # jmx monitoring port
 
   tomcat9ci_993y:
     image: localhost:5000/tomcat9ci
@@ -32,6 +33,7 @@ services:
     ports:
       - "8181:8080" # http port
       - "8281:8009" # ajp port
+      - "8381:364"  # jmx monitoring port
 
   tomcat9ci_100x:
     image: localhost:5000/tomcat9ci
@@ -48,6 +50,7 @@ services:
     ports:
       - "8182:8080" # http port
       - "8282:8009" # ajp port
+      - "8382:364"  # jmx monitoring port
 
   tomcat9ci_ninecall:
     image: localhost:5000/tomcat9ci
@@ -64,3 +67,4 @@ services:
     ports:
       - "8183:8080" # http port
       - "8283:8009" # ajp port
+      - "8383:364"  # jmx monitoring port
