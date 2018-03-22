@@ -1,0 +1,19 @@
+version: "2"
+services:
+
+  teamcity9ci:
+    image: jetbrains/teamcity-server
+    container_name: teamcity9ci
+    volumes:
+      - ../../teamcity/data:/data/teamcity_server/datadir
+      - ../../teamcity/logs:/opt/teamcity/logs
+    ports:
+      - "8111:8111"
+    external_links:
+      - artifactory9ci
+      - mssql9ci
+      - mysql9ci
+      - tomcat9ci_100x
+      - tomcat9ci_993y
+      - tomcat9ci_99x
+      - tomcat9ci_ninecall
