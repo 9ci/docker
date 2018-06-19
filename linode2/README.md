@@ -2,32 +2,67 @@
 
 This document describes everything done to ln02.9ci.com.
 
-# Tasks
+# Task Overview
 
-It would be easy to reload the system from the linode control panel to ensure that nothing is done outside of docker.
+Following instructions from:
 
-## Get rancher setup on linode
+* https://rancher.com/docs/rancher/v2.x/en/quick-start-guide/
+* https://linode.com/docs/applications/containers/how-to-deploy-apps-with-rancher/
 
-https://rancher.com/docs/rancher/v1.6/en/quick-start-guide/ has the initial info
+1. Setup DNS
+2. Prepare a host
+3. Get Rancher
 
-see https://linode.com/docs/applications/containers/how-to-deploy-apps-with-rancher/ It might be out of date as their script might not be needed.
+# Setup DNS
+
+Add a CNAME record for rancher.9ci.com to point to ln02.9ci.com.
+
+# Prepare a Linux host
+
+Start with a brand new 64-bit Ubuntu 16.04 
+
+```
+# Starting with the latest stuff
+sudo apt update
+sudo apt upgrade
+
+# Install docker
+sudo apt install docker.io
+sudo usermod -aG docker <YOURUSER>
+
+# Install other handy tools
+sudo apt install vim-nox
+sudo apt install git
+sudo apt install tmux
+
+# This part installs convenient aliases and shell scripts.
+git checkout git@github.com:ken-roberts/krstuff.git
+sudo mv krstuff /usr/local/
+cp -rax /usr/local/krstuff/skel/Linux ~/.krstuff
+echo "# Pull in krstuff profile" >> ~/.bash\_profile
+echo '[[ -s "$HOME/.krstuff/profile" ]] && source "$HOME/.krstuff/profile"' >> ~/.bash\_profile
+. ~/.bash\_profile
+```
 
 
-## Create a latest teamcity in it
+# Get rancher
 
-## Show us that it works
+```
+docker run -d --name rancher --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
+```
 
+# Configuring rancher
 
-# Currently on the system
-
-## Apps installed directly on the host
-
-1. old-school tomcat for grails3demo.greenbill.com, not currently used.
-2. scripts used by teamcity for deploying from old linode box
-3. apache2 for \*.greenbill.com certificate and front-end for all the tomcats.
-
-## Apps installed on docker
-
-1. mysql on docker - persistent from ../nine/mysql-compose.yml
-2. docker registry - persistent from ../nine/registry-compose.yml
-3. 4x tomcats on docker - persistent from ../nine/teamcity-compose.yml
+1. Open a web browser and enter the xip address of your host: https://<server_ip>. Replace <server_ip> with your host IP address
+2. When prompted, create a password for the default admin account there
+3. Set the __Rancher Server URL__ to __rancher.9ci.com__. This must be reachable by every rancher node
+4. Clusters: __Add cluster__
+5. Choose __Custom__
+6. Enter __Cluster Name__ as ___9ciTesting___
+7. Skip __Member Roles__ and __Cluster Options__
+8. Click __Next__
+9. From __Node Role__, select all the roles (etcd, Control, Worker)
+10. Node Address section, the public address should be the ip for ln02.9ci.com. The internal address should be docker0 or whatever we create for the teamcity testing suite
+11. There is a command displayed on the screen in a big black box. Copy it and paste it into an ssh session on ln02.9ci.com
+12. When the command completes, click the __Done__ button on the browser control panel page.
+13. Wait for the cluster state to say __Active__. The rancher task in the process list will be using significant CPU time while it's provisioning so you can watch it in the __top__ command line tool.

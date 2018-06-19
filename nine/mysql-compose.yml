@@ -15,5 +15,6 @@ services:
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=999plazadrive
+      - MYSQL_ROOT_HOST=%
     volumes: # These volumes map to my host-based mysql server, so I turn that off and run it on docker.
-      - "/var/lib/mysql:/var/lib/mysql"
+      - "/var/lib/mysql/mysql9ci:/var/lib/mysql"
