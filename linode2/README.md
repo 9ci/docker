@@ -29,7 +29,11 @@ sudo apt upgrade
 # Install docker
 sudo apt install docker.io
 sudo usermod -aG docker <YOURUSER>
+```
 
+The following is an optional grab for command-line tools I use in every Linux or Mac box. It has no ultimate affect on the rancher install but takes little time and provides a lot of things I use:
+
+```
 # Install other handy tools
 sudo apt install vim-nox
 sudo apt install git
@@ -51,7 +55,7 @@ echo '[[ -s "$HOME/.krstuff/profile" ]] && source "$HOME/.krstuff/profile"' >> ~
 docker run -d --name rancher --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
 ```
 
-# Configuring rancher
+## Configuring rancher
 
 1. Open a web browser and enter the xip address of your host: https://<server_ip>. Replace <server_ip> with your host IP address
 2. When prompted, create a password for the default admin account there
