@@ -57,7 +57,7 @@ docker run -d --name rancher --restart=unless-stopped -p 80:80 -p 443:443 ranche
 
 ## Configuring rancher
 
-1. Open a web browser and enter the xip address of your host: https://<server_ip>. Replace <server_ip> with your host IP address
+1. Open a web browser and enter the ip address of your host: https://<server_ip>. Replace <server_ip> with your host IP address
 2. When prompted, create a password for the default admin account there
 3. Set the __Rancher Server URL__ to __rancher.9ci.com__. This must be reachable by every rancher node
 4. Clusters: __Add cluster__
